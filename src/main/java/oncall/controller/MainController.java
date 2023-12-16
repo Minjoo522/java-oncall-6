@@ -1,6 +1,7 @@
 package oncall.controller;
 
 import java.util.List;
+import oncall.domain.Result;
 import oncall.domain.Schedule;
 import oncall.domain.Staff;
 import oncall.domain.Staffs;
@@ -11,6 +12,7 @@ public class MainController {
     public void run() {
         Schedule schedule = getSchedule();
         Staffs staffs = getStaffs();
+        Result result = new Result(schedule, staffs);
     }
 
     private Schedule getSchedule() {

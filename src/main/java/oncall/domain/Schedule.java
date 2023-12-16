@@ -2,6 +2,7 @@ package oncall.domain;
 
 import static oncall.config.ErrorMessage.INVALID_DAY_OF_WEEK_INPUT;
 import static oncall.config.ErrorMessage.INVALID_MONTH_INPUT;
+import static oncall.config.ErrorMessage.NOT_FOUND_END_DATE_OF_MONTH;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,5 +37,13 @@ public class Schedule {
                 .filter(week -> week.getMessage().equals(dayOfWeek.trim()))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(INVALID_DAY_OF_WEEK_INPUT.getMessage()));
+    }
+
+    public int findEndDate() {
+        return Arrays.stream(EndDateOfMonth.values())
+                .filter(endDateOfMonth -> endDateOfMonth.getMonths().contains(month))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_END_DATE_OF_MONTH.getMessage()))
+                .getEndDate();
     }
 }

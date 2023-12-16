@@ -11,6 +11,7 @@ public enum ErrorMessage {
     INVALID_DAY_OF_WEEK_INPUT("올바르지 않은 요일입니다. 다시 입력해 주세요."),
     NOT_EMPTY_NAME("사원의 이름을 공백으로 입력할 수 없습니다."),
     NAME_DUPLICATED("중복된 사원을 입력할 수 없습니다"),
+    NOT_FOUND_END_DATE_OF_MONTH("해당 월을 찾을 수 없습니다."),
     NAME_LENGTH_OUT_OF_BOUND(
             String.format(
                     "사원의 이름은 %d자를 초과할 수 없습니다.",
