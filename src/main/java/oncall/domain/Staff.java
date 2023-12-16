@@ -13,7 +13,7 @@ public class Staff {
     }
 
     private void validate(String name) throws IllegalArgumentException {
-        validateLength(name);
+        validateNotNull(name);
         validateLength(name);
     }
 
