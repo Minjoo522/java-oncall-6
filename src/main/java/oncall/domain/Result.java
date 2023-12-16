@@ -28,6 +28,7 @@ public class Result {
 
         for (int i = 0; i < getEndDateOfMonth(); i++) {
             DayOfWeek dayOfWeek = dayOfWeeks.get((startIndex + i) % dayOfWeeks.size());
+            // date는 1부터 시작하기 때문에 i + 1 함
             String category = findCategory(dayOfWeek, i + 1);
             Staff todayStaff = findTodayStaff(category, yesterdayStaff);
 
