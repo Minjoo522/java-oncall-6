@@ -46,4 +46,12 @@ public class Schedule {
                 .orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_END_DATE_OF_MONTH.getMessage()))
                 .getEndDate();
     }
+
+    public int getMonth() {
+        return this.month;
+    }
+
+    public DayOfWeek getStartDayOfWeek() {
+        return this.startDayOfWeek;
+    }
 }

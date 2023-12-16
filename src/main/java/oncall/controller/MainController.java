@@ -13,6 +13,7 @@ public class MainController {
         Schedule schedule = getSchedule();
         Staffs staffs = getStaffs();
         Result result = new Result(schedule, staffs);
+        OutputView.printFinalResult(result.getFinal());
     }
 
     private Schedule getSchedule() {

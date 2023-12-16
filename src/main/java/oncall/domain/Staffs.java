@@ -8,6 +8,7 @@ import static oncall.config.ErrorMessage.STAFFS_SIZE_OUT_OF_BOUND;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Staffs {
@@ -62,5 +63,25 @@ public class Staffs {
             throw new IllegalArgumentException(INVALID_INPUT.getMessage());
         }
         return weekendsStaffs;
+    }
+
+    public Staff getStaff(String category, int date) {
+        if (Objects.equals(category, "평일")) {
+            return weekdaysStaffs.get(date % weekendsStaffs.size());
+        }
+        if (Objects.equals(category, "휴일")) {
+            return weekendsStaffs.get(date % weekendsStaffs.size());
+        }
+        return null;
+    }
+
+    public Staff getNextStaff(String category, int date) {
+        if (Objects.equals(category, "평일")) {
+            return weekdaysStaffs.get(date % weekendsStaffs.size() + 1);
+        }
+        if (Objects.equals(category, "휴일")) {
+            return weekendsStaffs.get(date % weekendsStaffs.size() + 1);
+        }
+        return null;
     }
 }
