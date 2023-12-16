@@ -68,10 +68,10 @@ public class Staffs {
     }
 
     public Staff getStaff(String category, int date) {
-        if (Objects.equals(category, "평일")) {
+        if (Objects.equals(category, WEEKDAY_CATEGORY_NAME)) {
             return weekdaysStaffs.get(date % weekendsStaffs.size());
         }
-        if (Objects.equals(category, "휴일")) {
+        if (Objects.equals(category, WEEKEND_CATEGORY_NAME)) {
             return weekendsStaffs.get(date % weekendsStaffs.size());
         }
         return null;
