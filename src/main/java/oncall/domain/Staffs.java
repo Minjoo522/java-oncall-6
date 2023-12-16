@@ -2,6 +2,8 @@ package oncall.domain;
 
 import static oncall.config.Config.MAXIMUM_STAFFS_SIZE;
 import static oncall.config.Config.MINIMUM_STAFFS_SIZE;
+import static oncall.config.Config.WEEKDAY_CATEGORY_NAME;
+import static oncall.config.Config.WEEKEND_CATEGORY_NAME;
 import static oncall.config.ErrorMessage.INVALID_INPUT;
 import static oncall.config.ErrorMessage.NAME_DUPLICATED;
 import static oncall.config.ErrorMessage.STAFFS_SIZE_OUT_OF_BOUND;
@@ -76,10 +78,10 @@ public class Staffs {
     }
 
     public Staff getNextStaff(String category, int date) {
-        if (Objects.equals(category, "평일")) {
+        if (Objects.equals(category, WEEKDAY_CATEGORY_NAME)) {
             return weekdaysStaffs.get(date % weekendsStaffs.size() + 1);
         }
-        if (Objects.equals(category, "휴일")) {
+        if (Objects.equals(category, WEEKEND_CATEGORY_NAME)) {
             return weekendsStaffs.get(date % weekendsStaffs.size() + 1);
         }
         return null;
