@@ -2,7 +2,6 @@ package oncall.domain;
 
 import static oncall.config.ErrorMessage.NAME_DUPLICATED;
 import static oncall.config.ErrorMessage.STAFFS_SIZE_OUT_OF_BOUND;
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import java.util.List;
