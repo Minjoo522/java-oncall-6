@@ -28,4 +28,8 @@ public class Staff {
             throw new IllegalArgumentException(NAME_LENGTH_OUT_OF_BOUND.getMessage());
         }
     }
+
+    public String getName() {
+        return this.name;
+    }
 }

@@ -30,6 +30,12 @@ public class InputView {
         return splitByComma(input);
     }
 
+    public static List<String> readWeekendsStaffNames() {
+        String input = readInput(Message.REQUEST_WEEKENDS_STAFF_NAMES);
+        validateInput(input);
+        return splitByComma(input);
+    }
+
     private static void validateInput(String input) throws IllegalArgumentException {
         if (input == null || input.trim().isEmpty()) {
             throw new IllegalArgumentException(NOT_EMPTY.getMessage());
@@ -48,7 +54,8 @@ public class InputView {
 
     private enum Message {
         REQUEST_MONTH_AND_DAY_OF_WEEK("비상 근무를 배정할 월과 시작 요일을 입력하세요> "),
-        REQUEST_WEEKDAYS_STAFF_NAMES("평일 비상 근무 순번대로 사원 닉네임을 입력하세요> ");
+        REQUEST_WEEKDAYS_STAFF_NAMES("평일 비상 근무 순번대로 사원 닉네임을 입력하세요> "),
+        REQUEST_WEEKENDS_STAFF_NAMES("휴일 비상 근무 순번대로 사원 닉네임을 입력하세요> ");
 
         private final String message;
 

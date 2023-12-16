@@ -27,6 +27,7 @@ public class MainController {
         while (true) {
             try {
                 Staffs staffs = new Staffs(InputView.readWeekdaysStaffNames());
+                staffs.createWeekendsStaffs(InputView.readWeekendsStaffNames());
                 return staffs;
             } catch (IllegalArgumentException e) {
                 OutputView.printErrorMessage(e);
