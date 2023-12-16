@@ -1,5 +1,6 @@
 package oncall.config;
 
+
 import static oncall.config.Config.MAXIMUM_NAME_LENGTH;
 import static oncall.config.Config.MAXIMUM_STAFFS_SIZE;
 import static oncall.config.Config.MINIMUM_STAFFS_SIZE;
@@ -15,14 +16,14 @@ public enum ErrorMessage {
     NAME_LENGTH_OUT_OF_BOUND(
             String.format(
                     "사원의 이름은 %d자를 초과할 수 없습니다.",
-                    MAXIMUM_NAME_LENGTH.getValue()
+                    MAXIMUM_NAME_LENGTH
             )
     ),
     STAFFS_SIZE_OUT_OF_BOUND(
             String.format(
                     "사원 수는 %d자 이상 %d자 이하여야 합니다.",
-                    MINIMUM_STAFFS_SIZE.getValue(),
-                    MAXIMUM_STAFFS_SIZE.getValue()
+                    MINIMUM_STAFFS_SIZE,
+                    MAXIMUM_STAFFS_SIZE
             )
     );
 

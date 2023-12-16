@@ -1,10 +1,15 @@
 package oncall.domain;
 
-import java.util.ArrayList;
+import static oncall.config.Config.WEEKDAY_CATEGORY_NAME;
+import static oncall.config.Config.WEEKEND_CATEGORY_NAME;
+
 import java.util.List;
 import java.util.Objects;
+import java.util.ArrayList;
 
 public class Result {
+    private static final String BASE = "%d월 %d일 %s %s";
+
     private final Schedule schedule;
     private final Staffs staffs;
     private int weekdayCount;
@@ -40,18 +45,18 @@ public class Result {
         String category = dayOfWeek.getCategory();
         boolean isHoliday = LegalHolidays.isHoliday(schedule.getMonth(), date);
         if (isHoliday) {
-            category = "휴일";
+            category = WEEKEND_CATEGORY_NAME;
         }
         return category;
     }
 
     private Staff findTodayStaff(String category, Staff yesterdayStaff) {
         Staff todayStaff = null;
-        if (Objects.equals(category, "평일")) {
+        if (Objects.equals(category, WEEKDAY_CATEGORY_NAME)) {
             todayStaff = staffs.getStaff(category, weekdayCount);
             weekdayCount += 1;
         }
-        if (Objects.equals(category, "휴일")) {
+        if (Objects.equals(category, WEEKEND_CATEGORY_NAME)) {
             todayStaff = staffs.getStaff(category, weekendCount);
             weekendCount += 1;
         }
@@ -62,10 +67,10 @@ public class Result {
     }
 
     private Staff searchNextStaff(String category) {
-        if (Objects.equals(category, "평일")) {
+        if (Objects.equals(category, WEEKDAY_CATEGORY_NAME)) {
             return staffs.getNextStaff(category, weekdayCount);
         }
-        if (Objects.equals(category, "휴일")) {
+        if (Objects.equals(category, WEEKEND_CATEGORY_NAME)) {
             return staffs.getNextStaff(category, weekendCount);
         }
         return null;
@@ -75,9 +80,9 @@ public class Result {
         boolean isHoliday = LegalHolidays.isHoliday(schedule.getMonth(), date);
         if (isHoliday) {
             return String.format(
-                    "%d월 %d일 %s %s", schedule.getMonth(), date, dayOfWeek.getMessage() + "(휴일)", todayStaff.getName()
+                    BASE, schedule.getMonth(), date, dayOfWeek.getMessage() + "(휴일)", todayStaff.getName()
             );
         }
-        return String.format("%d월 %d일 %s %s", schedule.getMonth(), date, dayOfWeek.getMessage(), todayStaff.getName());
+        return String.format(BASE, schedule.getMonth(), date, dayOfWeek.getMessage(), todayStaff.getName());
     }
 }

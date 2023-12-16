@@ -31,7 +31,7 @@ public class Staffs {
     }
 
     private void validateNotOutOfBound(List<String> staffNames) {
-        if (staffNames.size() < MINIMUM_STAFFS_SIZE.getValue() || staffNames.size() > MAXIMUM_STAFFS_SIZE.getValue()) {
+        if (staffNames.size() < MINIMUM_STAFFS_SIZE || staffNames.size() > MAXIMUM_STAFFS_SIZE) {
             throw new IllegalArgumentException(STAFFS_SIZE_OUT_OF_BOUND.getMessage());
         }
     }

@@ -24,7 +24,7 @@ public class Staff {
     }
 
     private void validateLength(String name) throws IllegalArgumentException {
-        if (name.trim().length() > MAXIMUM_NAME_LENGTH.getValue()) {
+        if (name.trim().length() > MAXIMUM_NAME_LENGTH) {
             throw new IllegalArgumentException(NAME_LENGTH_OUT_OF_BOUND.getMessage());
         }
     }
